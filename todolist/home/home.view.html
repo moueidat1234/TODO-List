@@ -1,0 +1,48 @@
+<head>
+    <title>TODO List</title>
+    <meta charset="utf-8">
+    <link data-require="bootstrap-css@*" data-semver="3.3.6" rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+    <script data-require="angular.js@1.5.5" data-semver="1.5.5"
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="1.3.2"
+        src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-1.3.2.js"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        nav.navbar.navbar-default.ng-scope {
+            width: 211% !important;
+            margin-top: -49px;
+            margin-left: -404px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">TODO List</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+
+                <li><a href="todo.view.html" class="btn">TODO</a></li>
+                <li><a href="#!/login" class="btn">Logout</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Hi {{vm.user.firstName}} {{vm.user.lastName}}</h1>
+        <p>To create,edit or delete a to-do list click here:</p>
+        <button type="button" class="btn btn-primary" onclick="location.href='todo.view.html';">TODO</button>
+    </div>
+
+</body>
+
+</html>

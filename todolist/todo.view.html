@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TODO List</title>
+    <link data-require="bootstrap-css@*" data-semver="3.3.6" rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+    <script data-require="angular.js@1.5.5" data-semver="1.5.5"
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="1.3.2"
+        src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-1.3.2.js"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+</head>
+
+<body ng-app="app">
+
+
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">TODO List</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#" onclick="myFunction()">Home</a></li>
+
+                <li class="active"><a onclick="myFunction2()">TODO</a></li>
+                <li><a onclick="myFunction1()">Logout</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <div ng-controller="todoCtrl as vm">
+        <div class="row">
+            <div class="rk-comp-wrap col-sm-12" data-rk-dsgn-nav="3" data-rk-dsgn-comp="4" data-original-title=""
+                title="">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="rk-comp-wrap col-sm-12" data-rk-dsgn-nav="3" data-rk-dsgn-comp="1013"
+                                data-original-title="" title="">
+                                <form class="form-horizontal" ng-submit="vm.addTodo()">
+                                    <div class="rk-comp-wrap col-sm-12" data-rk-dsgn-nav="3" data-rk-dsgn-comp="1002"
+                                        data-original-title="" title="">
+                                        <div class="form-group">
+
+                                            <div class="input-group"><input class="form-control" name="" type="text"
+                                                    placeholder="Add todo here" ng-model="vm.todo">
+                                                <div class="input-group-btn"><button class="btn btn-success"
+                                                        ng-click="vm.addTodo()"><i class="fa fa-plus"></i> </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body ">
+
+                        <div class="row">
+                            <div class="rk-comp-wrap col-sm-12" data-rk-dsgn-nav="3" data-rk-dsgn-comp="1017"
+                                data-original-title="" title="">
+                                <ul class="list-group">
+
+                                    <li class="list-group-item " ng-repeat="todo in vm.todos">
+                                        <div class="form-group" ng-show="todo.editing">
+                                            <div class="input-group"><input class="form-control" name="" type="text"
+                                                    placeholder="Edit todo here" ng-model="todo.text">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-success" ng-click="vm.editDone(todo,true)"><i
+                                                            class="fa fa-save"></i>
+                                                    </button>
+                                                    <button class="btn btn-warning"
+                                                        ng-click="vm.editDone(todo,false)"><i class="fa fa-close"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" ng-show="!todo.editing">
+                                            <div class="rk-comp-wrap col-sm-1" data-rk-dsgn-nav="3"
+                                                data-rk-dsgn-comp="1009" data-original-title="" title="">
+                                                <div class="form-group">
+                                                    <div class="checkbox"><label>
+                                                            <input type="checkbox" ng-model="todo.done"> <span
+                                                                rk-edit=""></span>
+                                                        </label></div>
+                                                </div>
+                                            </div>
+                                            <div class="rk-comp-wrap col-sm-8" data-rk-dsgn-nav="3"
+                                                data-rk-dsgn-comp="1" data-original-title="" title="">
+                                                <h4 rk-edit="" class="text-warning">{{todo.text}}</h4>
+                                            </div>
+                                            <div class="rk-comp-wrap col-sm-3" data-rk-dsgn-nav="3"
+                                                data-rk-dsgn-comp="5" data-original-title="" title="">
+                                                <div class="btn-group"><button class="btn btn-success"
+                                                        ng-click="vm.edit(todo)"><i class="fa fa-edit"></i> </button>
+                                                </div>
+                                                <div class="btn-group"><button class="btn btn-danger" type="button"
+                                                        rk-edit="" ng-click="vm.remove(todo)"><i
+                                                            class="fa fa-close"></i> </button></div>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer bg-success clearfix">
+                        <div class="bg-success " rk-edit="">
+                            <div class="row">
+                                <div class="rk-comp-wrap text-center col-sm-3" data-rk-dsgn-nav="3"
+                                    data-rk-dsgn-comp="1008" data-original-title="" title=""><a href="#" rk-edit=""
+                                        class="btn" ng-click="vm.markAll()">All</a>
+                                </div>
+                                <div class="rk-comp-wrap text-center col-sm-3" data-rk-dsgn-nav="3"
+                                    data-rk-dsgn-comp="1008" data-original-title="" title=""><a href="#" rk-edit=""
+                                        class="btn" ng-bind="vm.completed()">completed</a></div>
+                                <div class="rk-comp-wrap text-center col-sm-3" data-rk-dsgn-nav="3"
+                                    data-rk-dsgn-comp="1008" data-original-title="" title=""><a href="#" rk-edit=""
+                                        ng-bind="vm.total()">total</a></div>
+                                <div class="rk-comp-wrap text-center col-sm-3" data-rk-dsgn-nav="3"
+                                    data-rk-dsgn-comp="1008" data-original-title="" title=""><a href="#" rk-edit=""
+                                        ng-click="vm.archive()">Archive completed</a>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="todo.js">
+
+</script>
+<script>
+    function myFunction() {
+        location.href = "http://127.0.0.1:5501/index.html#!/";
+    }
+    function myFunction1() {
+        location.href = "http://127.0.0.1:5501/index.html#!/login";
+    }
+    function myFunction2() {
+        location.href = "  http://127.0.0.1:5501/todo.view.html";
+    }
+</script>
+
+</html>
